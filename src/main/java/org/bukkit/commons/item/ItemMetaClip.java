@@ -2,11 +2,12 @@ package org.bukkit.commons.item;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.commons.item.interfaces.ItemStackSupplier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -19,112 +20,104 @@ import com.google.common.collect.Multimap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ChainItemMeta implements ItemStackSupplier {
-    protected final ItemStack item;
-    protected final ItemMeta meta;
+public class ItemMetaClip {
+    private final static ItemMeta EMPTY_META = new ItemStack(Material.AIR).getItemMeta();
+    
+    protected final ItemMeta meta = new ItemStack(Material.AIR).getItemMeta();
     
     public ItemMeta toItemMeta() {
         return meta;
     }
     
-    @Override
-    public ItemStack toItemStack() {
-        assert item != null : "TRAP";
-        return item;
+    public ItemMeta applyFor(ItemMeta itemMeta) {
+        if (itemMeta.getDisplayName().equals(EMPTY_META.getDisplayName()))
+            itemMeta.setDisplayName(meta.getDisplayName());
+        
+        if (itemMeta.getEnchants().isEmpty() && meta.hasEnchants())
+            for (Entry<Enchantment, Integer> enchantment : meta.getEnchants().entrySet())
+                itemMeta.addEnchant(enchantment.getKey(), enchantment.getValue(), true);
+        
+        if (!itemMeta.hasLore() && meta.hasLore())
+            itemMeta.setLore(meta.getLore());
+        
+        return itemMeta;
     }
     
-    // Performance things
-    public ChainItemMeta setMetaFor(ItemStack itemStack) {
-        itemStack.setItemMeta(meta);
-        return this;
-    }
-    
-    public ChainItemMeta setMetaFor(ItemStack... itemStacks) {
-        for (ItemStack itemStack : itemStacks)
-            itemStack.setItemMeta(meta);
-        return this;
-    }
-    
-    public ChainItemMeta applyMetaClip(ItemMetaClip clip) {
-        clip.applyFor(meta);
-        return this;
-    }
-
     // ------------------------------
     // Setter
     // ------------------------------
 
-    public ChainItemMeta addEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction) {
+    public ItemMetaClip addEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction) {
         meta.addEnchant(ench, level, ignoreLevelRestriction);
         return this;
     }
 
-    public ChainItemMeta removeEnchant(Enchantment ench) {
+    public ItemMetaClip removeEnchant(Enchantment ench) {
         meta.removeEnchant(ench);
         return this;
     }
 
-    public ChainItemMeta getAttributeModifiers(EquipmentSlot slot) {
+    public ItemMetaClip getAttributeModifiers(EquipmentSlot slot) {
         meta.getAttributeModifiers(slot);
         return this;
     }
 
-    public ChainItemMeta getAttributeModifiers(Attribute attribute) {
+    public ItemMetaClip getAttributeModifiers(Attribute attribute) {
         meta.getAttributeModifiers(attribute);
         return this;
     }
 
-    public ChainItemMeta addAttributeModifier(Attribute attribute, AttributeModifier modifier) {
+    public ItemMetaClip addAttributeModifier(Attribute attribute, AttributeModifier modifier) {
         meta.addAttributeModifier(attribute, modifier);
         return this;
     }
 
-    public ChainItemMeta removeAttributeModifier(Attribute attribute) {
+    public ItemMetaClip removeAttributeModifier(Attribute attribute) {
         meta.removeAttributeModifier(attribute);
         return this;
     }
 
-    public ChainItemMeta removeAttributeModifier(EquipmentSlot slot) {
+    public ItemMetaClip removeAttributeModifier(EquipmentSlot slot) {
         meta.removeAttributeModifier(slot);
         return this;
     }
 
-    public ChainItemMeta removeAttributeModifier(Attribute attribute, AttributeModifier modifier) {
+    public ItemMetaClip removeAttributeModifier(Attribute attribute, AttributeModifier modifier) {
         meta.removeAttributeModifier(attribute, modifier);
         return this;
     }
     
-    public ChainItemMeta setAttributeModifiers(Multimap<Attribute, AttributeModifier> attributeModifiers) {
+    public ItemMetaClip setAttributeModifiers(Multimap<Attribute, AttributeModifier> attributeModifiers) {
         meta.setAttributeModifiers(attributeModifiers);
         return this;
     }
     
-    public ChainItemMeta setDisplayName(String name) {
+    public ItemMetaClip setDisplayName(String name) {
         meta.setDisplayName(name);
         return this;
     }
     
-    public ChainItemMeta setLore(List<String> lore) {
+    public ItemMetaClip setLore(List<String> lore) {
         meta.setLore(lore);
         return this;
     }
     
-    public ChainItemMeta setLocalizedName(String name) {
+    public ItemMetaClip setLocalizedName(String name) {
         meta.setLocalizedName(name);
         return this;
     }
     
-    public ChainItemMeta addItemFlags(ItemFlag... itemFlags) {
+    public ItemMetaClip addItemFlags(ItemFlag... itemFlags) {
         meta.addItemFlags(itemFlags);
         return this;
     }
 
-    public ChainItemMeta removeItemFlags(ItemFlag... itemFlags) {
+    public ItemMetaClip removeItemFlags(ItemFlag... itemFlags) {
         meta.removeItemFlags(itemFlags);
         return this;
     }
 
-    public ChainItemMeta setUnbreakable(boolean unbreakable) {
+    public ItemMetaClip setUnbreakable(boolean unbreakable) {
         meta.setUnbreakable(unbreakable);
         return this;
     }

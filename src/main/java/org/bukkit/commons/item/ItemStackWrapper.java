@@ -9,7 +9,7 @@ public class ItemStackWrapper implements ItemStackSupplier {
     private final ItemStack item;
     
     public ChainItemMeta getItemMetaReference() {
-        return Items.getItemMetaReference(item);
+        return Items.getMetaReference(item);
     }
     
     @Override
