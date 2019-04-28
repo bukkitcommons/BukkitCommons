@@ -7,15 +7,15 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public  class Items {
-    public static ChainItemMeta getMetaReference(ItemStack itemStack) {
-        return new ChainItemMeta(itemStack, new ItemMetaReference(itemStack, itemStack.getItemMeta()));
+    public static ItemMetaReference getMetaReference(ItemStack itemStack) {
+        return new ItemMetaReference(itemStack, itemStack.getItemMeta());
     }
     
     public static ItemStackWrapper createItem(Material type) {
         return new ItemStackWrapper(new ItemStack(type));
     }
         
-    public static ChainItemMeta createItemAndAcquireMetaReference(Material type) {
+    public static ItemMetaReference createItemAndAcquireMetaReference(Material type) {
         return getMetaReference(new ItemStack(type));
     }
     
@@ -23,7 +23,7 @@ public  class Items {
         return new ItemStackWrapper(new ItemStack(type, amount));
     }
     
-    public static ChainItemMeta createItemAndAcquireMetaReference(Material type, int amount) {
+    public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount) {
         return getMetaReference(new ItemStack(type, amount));
     }
     
@@ -33,7 +33,7 @@ public  class Items {
     }
     
     @SuppressWarnings("deprecation")
-    public static ChainItemMeta createItemAndAcquireMetaReference(Material type, int amount, short damage) {
+    public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount, short damage) {
         return getMetaReference(new ItemStack(type, amount, damage));
     }
 
@@ -43,7 +43,7 @@ public  class Items {
     }
     
     @SuppressWarnings("deprecation")
-    public static ChainItemMeta createItemAndAcquireMetaReference(Material type, int amount, short damage, Byte data) {
+    public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount, short damage, Byte data) {
         return getMetaReference(new ItemStack(type, amount, damage, data));
     }
     

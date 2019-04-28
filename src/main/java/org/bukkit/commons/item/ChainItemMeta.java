@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.commons.item.interfaces.ItemMetaSupplier;
 import org.bukkit.commons.item.interfaces.ItemStackSupplier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
@@ -19,32 +20,63 @@ import com.google.common.collect.Multimap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ChainItemMeta implements ItemStackSupplier {
+public class ChainItemMeta implements ItemStackSupplier, ItemMetaSupplier {
     protected final ItemStack item;
     protected final ItemMeta meta;
     
+    /**
+     * 
+     * @return
+     */
+    @Override
     public ItemMeta toItemMeta() {
         return meta;
     }
     
+    /**
+     * 
+     * @return
+     */
     @Override
     public ItemStack toItemStack() {
-        assert item != null : "TRAP";
         return item;
     }
     
+    /**
+     * 
+     * @return
+     */
+    public ItemMetaReference reference() {
+        return new ItemMetaReference(item, meta);
+    }
+    
     // Performance things
+    /**
+     * 
+     * @param itemStack
+     * @return
+     */
     public ChainItemMeta setMetaFor(ItemStack itemStack) {
         itemStack.setItemMeta(meta);
         return this;
     }
     
+    /**
+     * 
+     * @param itemStacks
+     * @return
+     */
     public ChainItemMeta setMetaFor(ItemStack... itemStacks) {
         for (ItemStack itemStack : itemStacks)
             itemStack.setItemMeta(meta);
         return this;
     }
     
+    /**
+     * 
+     * @param clip
+     * @return
+     */
     public ChainItemMeta applyMetaClip(ItemMetaClip clip) {
         clip.applyFor(meta);
         return this;

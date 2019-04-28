@@ -8,6 +8,7 @@ import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.commons.item.interfaces.ItemMetaSupplier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -20,11 +21,12 @@ import com.google.common.collect.Multimap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ItemMetaClip {
+public class ItemMetaClip implements ItemMetaSupplier {
     private final static ItemMeta EMPTY_META = new ItemStack(Material.AIR).getItemMeta();
     
     protected final ItemMeta meta = new ItemStack(Material.AIR).getItemMeta();
     
+    @Override
     public ItemMeta toItemMeta() {
         return meta;
     }
