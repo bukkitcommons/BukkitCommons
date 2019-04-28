@@ -6,12 +6,12 @@ import org.bukkit.inventory.ItemStack;
 
 public class ItemsTest {
     public void test() {
-        ItemStack item = new ItemStack(Material.AIR);
-        ItemStack item_ = new ItemStack(Material.AIR);
+        ItemStack itemStack = Items.createItem(Material.AIR, 5)
+                                   .getItemMetaReference()
+                                   .setUnbreakable(true)
+                                   .setDisplayName("test")
+                                   .toItemStack();
         
-        Items.getItemMetaReference(item)
-             .setUnbreakable(true)
-             .setDisplayName("test")
-             .setMetaFor(item_);
+        itemStack.clone();
     }
 }

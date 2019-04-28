@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.commons.item.interfaces.ItemStackSupplier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -18,11 +19,18 @@ import com.google.common.collect.Multimap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ChainItemMeta {
-    private final ItemMeta meta;
+public class ChainItemMeta implements ItemStackSupplier {
+    protected final ItemStack item;
+    protected final ItemMeta meta;
     
     public ItemMeta toItemMeta() {
         return meta;
+    }
+    
+    @Override
+    public ItemStack toItemStack() {
+        assert item != null : "TRAP";
+        return item;
     }
     
     // Performance things

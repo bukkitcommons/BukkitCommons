@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.commons.item.interfaces.ItemStackSupplier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -19,9 +20,14 @@ import com.google.common.collect.Multimap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ItemMetaReference implements ItemMeta {
+public class ItemMetaReference implements ItemMeta, ItemStackSupplier {
     private final ItemStack item;
     private final ItemMeta meta;
+    
+    @Override
+    public ItemStack toItemStack() {
+        return item;
+    }
     
     // ------------------------------
     // Helper
