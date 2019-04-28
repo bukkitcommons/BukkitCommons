@@ -1,4 +1,6 @@
-name: BukkitAutoClose
-main: moe.kira.autoclose.plugin.AutoClosePlugin
-version: 1
-author: [SotrForgotten]
+name: BukkitCommons
+main: org.bukkit.commons.internal.plugin.BukkitCommonsPlugin
+version: 1.0.0
+load: STARTUP
+website: https://dev.bukkit.org/
+description: Next-generation plugin development framework for Bukkit API.
