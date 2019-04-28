@@ -1,0 +1,4 @@
+name: BukkitAutoClose
+main: moe.kira.autoclose.plugin.AutoClosePlugin
+version: 1
+author: [SotrForgotten]
