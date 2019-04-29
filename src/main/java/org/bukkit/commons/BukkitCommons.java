@@ -8,16 +8,61 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
-
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.commons.misc.BlockLocation;
+import org.bukkit.commons.misc.SimpleLocation;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class BukkitCommons {
+    // ------------------------------
+    // Bukkit Commons
+    // ------------------------------
+    // Simple location
+    public static SimpleLocation createSimpleLocation(org.bukkit.Location location) {
+        return new SimpleLocation(location);
+    }
+    
+    public static SimpleLocation createSimpleLocation(String world, double x, double y, double z) {
+        return new SimpleLocation(world, x, y, z);
+    }
+    
+    public static SimpleLocation createSimpleLocation(World world, double x, double y, double z) {
+        return new SimpleLocation(world.getName(), x, y, z);
+    }
+    
+    public static SimpleLocation createSimpleLocation(Entity entity) {
+        return new SimpleLocation(entity.getLocation());
+    }
+    
+    public static SimpleLocation createSimpleLocation(Block block) {
+        return new SimpleLocation(block.getLocation());
+    }
+    
+    // Block location
+    public static BlockLocation createBlockLocation(String world, int x, int y, int z) {
+        return new BlockLocation(world, x, y, z);
+    }
+    
+    public static BlockLocation createBlockLocation(World world, int x, int y, int z) {
+        return new BlockLocation(world.getName(), x, y, z);
+    }
+    
+    public static BlockLocation createBlockLocation(Block block) {
+        return new BlockLocation(block);
+    }
+    
+    public static BlockLocation createBlockLocation(Location location) {
+        return new BlockLocation(location);
+    }
+    
     // ------------------------------
     // Bukkit
     // ------------------------------
@@ -27,7 +72,7 @@ public final class BukkitCommons {
      * @param consumer
      * @return
      */
-    public Collection<? extends Player> forEachOnlinePlayers(@Nonnull Consumer<Player> consumer) {
+    public static Collection<? extends Player> forEachOnlinePlayers(@Nonnull Consumer<Player> consumer) {
         Collection<? extends Player> onlinePlayers = Bukkit.getOnlinePlayers();
         onlinePlayers.forEach(consumer);
         return onlinePlayers;
@@ -39,7 +84,7 @@ public final class BukkitCommons {
      * @return
      */
     @SneakyThrows
-    public int setMaxPlayers(int maxPlayers) {
+    public static int setMaxPlayers(int maxPlayers) {
         Field playerListField = Bukkit.getServer().getClass().getDeclaredField("playerList");
         Field maxPlayersField = playerListField.getDeclaringClass().getDeclaredField("maxPlayers");
         maxPlayersField.setAccessible(true);
@@ -52,7 +97,7 @@ public final class BukkitCommons {
      * @param consumer
      * @return
      */
-    public Collection<OfflinePlayer> forEachWhitelistedPlayers(@Nonnull Consumer<OfflinePlayer> consumer) {
+    public static Collection<OfflinePlayer> forEachWhitelistedPlayers(@Nonnull Consumer<OfflinePlayer> consumer) {
         Collection<OfflinePlayer> onlinePlayers = Bukkit.getWhitelistedPlayers();
         onlinePlayers.forEach(consumer);
         return onlinePlayers;
