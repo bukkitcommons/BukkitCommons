@@ -1,18 +1,29 @@
 package bukkit.commons.configuration.misc;
 
+import java.util.List;
 import com.google.gson.Gson;
 
+import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class ConfigurationSerializer {
-    private final static Gson GSON = new Gson();
+    private static final Gson GSON = new Gson();
     
-    public static String serialize(Object defaultValue) { // field (default) value -> configured (to save) value
-        return GSON.toJson(defaultValue);
+    public static Object serialize(Object value, Class<?> type) {
+        // let bukkit handle them
+        if (type.isPrimitive() || type.isAssignableFrom(List.class))
+            return value;
+        
+        return GSON.toJson(value);
     }
     
-    public static <T> T deserialize(String configuredValue, Class<? extends T> type) { // configured (saved) value -> field (to set) value
-        return GSON.fromJson(configuredValue, type);
+    @SneakyThrows
+    public static Object deserialize(Object value, Class<?> type) {
+        // let bukkit handle them
+        if (type.isPrimitive() || type.isAssignableFrom(List.class))
+            return value;
+        
+        return GSON.fromJson(String.valueOf(value), type);
     }
 }

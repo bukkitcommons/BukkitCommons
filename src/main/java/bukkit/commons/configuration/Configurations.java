@@ -3,7 +3,6 @@ package bukkit.commons.configuration;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import bukkit.commons.configuration.annotation.Node;
@@ -30,8 +29,11 @@ public final class Configurations {
             int mod = field.getModifiers();
             if (Modifier.isStatic(mod) && Modifier.isPublic(mod)) {
                 // hack final field
-                if (Modifier.isFinal(mod))
-                    field.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+                if (Modifier.isFinal(mod)) {
+                    Field modifiersField = Field.class.getDeclaredField("modifiers");
+                    modifiersField.setAccessible(true);
+                    modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+                }
                 
                 Object defaultValue = field.get(null);
                 String path = node.value();
@@ -40,15 +42,18 @@ public final class Configurations {
                 View view = field.getAnnotation(View.class);
                 // forcely override config-view options or saving default value
                 if (view != null || configuredValue == null) { 
-                    config.set(path, ConfigurationSerializer.serialize(defaultValue));
+                    config.set(path, ConfigurationSerializer.serialize(defaultValue, field.getType()));
                     toSave = true;
                 } else {
-                    field.set(null, ConfigurationSerializer.deserialize(String.class.cast(configuredValue), Object.class));
+                    field.set(null, ConfigurationSerializer.deserialize(configuredValue, field.getType()));
                 }
                 
                 // add final back
-                if (Modifier.isFinal(mod))
-                    field.setInt(field, field.getModifiers() & Modifier.FINAL);
+                if (Modifier.isFinal(mod)) {
+                    Field modifiersField = Field.class.getDeclaredField("modifiers");
+                    modifiersField.setAccessible(true);
+                    modifiersField.setInt(field, field.getModifiers() & Modifier.FINAL);
+                }
             }
         }
         
