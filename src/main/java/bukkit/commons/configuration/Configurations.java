@@ -14,9 +14,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class Configurations {
     @SneakyThrows
-    public static YamlConfiguration loadAndParseConfiguration(File file, Class<?> providerClass) {
-        boolean toSave = false;
-        YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+    public static YamlConfiguration loadAndParseConfiguration(YamlConfiguration config, Class<?> providerClass) {
         
         for (Field field : providerClass.getDeclaredFields()) {
             Node node = field.getAnnotation(Node.class);
@@ -43,7 +41,6 @@ public final class Configurations {
                 // forcely override config-view options or saving default value
                 if (view != null || configuredValue == null) { 
                     config.set(path, ConfigurationSerializer.serialize(defaultValue, field.getType()));
-                    toSave = true;
                 } else {
                     field.set(null, ConfigurationSerializer.deserialize(configuredValue, field.getType()));
                 }
@@ -56,9 +53,6 @@ public final class Configurations {
                 }
             }
         }
-        
-        if (toSave)
-            config.save(file);
         
         return config;
     }
