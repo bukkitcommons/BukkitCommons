@@ -1,5 +1,5 @@
 name: BukkitCommons
-main: org.bukkit.commons.internal.plugin.BukkitCommonsPlugin
+main: bukkit.plugin.CommonsPlugin
 version: 1.0.0
 load: STARTUP
 website: https://dev.bukkit.org/
