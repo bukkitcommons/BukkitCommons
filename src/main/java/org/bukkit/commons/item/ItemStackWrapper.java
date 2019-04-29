@@ -1,5 +1,7 @@
 package org.bukkit.commons.item;
 
+import java.util.function.Consumer;
+
 import org.bukkit.commons.item.interfaces.ItemMetaSupplier;
 import org.bukkit.commons.item.interfaces.ItemStackSupplier;
 import org.bukkit.inventory.ItemStack;
@@ -23,5 +25,11 @@ public class ItemStackWrapper implements ItemStackSupplier, ItemMetaSupplier {
     @Override
     public ItemMeta toItemMeta() {
         return item.getItemMeta();
+    }
+    
+    public ItemStackWrapper orElse(Consumer<ItemStack> consumer) {
+        if (item != null)
+            consumer.accept(item);
+        return this;
     }
 }

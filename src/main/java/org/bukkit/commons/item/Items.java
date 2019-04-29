@@ -1,5 +1,7 @@
 package org.bukkit.commons.item;
 
+import java.util.function.Consumer;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -7,6 +9,12 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public  class Items {
+    public static ItemStack orElse(ItemStack itemStack, Consumer<ItemStack> consumer) {
+        if (itemStack != null)
+            consumer.accept(itemStack);
+        return itemStack;
+    }
+    
     public static ItemMetaReference getMetaReference(ItemStack itemStack) {
         return new ItemMetaReference(itemStack, itemStack.getItemMeta());
     }
