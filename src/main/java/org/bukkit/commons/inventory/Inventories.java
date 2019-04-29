@@ -78,7 +78,7 @@ public class Inventories {
                                 }
                             }
                             
-                            // h
+                            // how it comes here?
                             return true;
                         } else {
                             // perfect match
