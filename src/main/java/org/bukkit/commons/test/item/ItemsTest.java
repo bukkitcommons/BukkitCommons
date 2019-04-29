@@ -10,12 +10,12 @@ public class ItemsTest {
     @SuppressWarnings("unused")
     public void test() {
         // reference
-        ItemMetaReference reference = Items.createItem(Material.AIR, 5).getItemMetaReference();
+        ItemMetaReference reference = Items.createItemAndAcquireMetaReference(Material.AIR, 5);
         reference.setUnbreakable(true);
         reference.setDisplayName("test");
         
         // chain
-        ItemStack itemStack = Items.createItemAndAcquireMetaReference(Material.AIR, 5).chain()
+        ItemStack itemStack = Items.createItemAndAcquireChainMetaReference(Material.AIR, 5)
                                    .setUnbreakable(true)
                                    .setDisplayName("test")
                                    .toItemStack();

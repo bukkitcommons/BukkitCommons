@@ -27,6 +27,10 @@ public  class Items {
         return getMetaReference(new ItemStack(type, amount));
     }
     
+    public static ChainItemMeta createItemAndAcquireChainMetaReference(Material type, int amount) {
+        return getMetaReference(new ItemStack(type, amount)).chain();
+    }
+    
     @SuppressWarnings("deprecation")
     public static ItemStackWrapper createItem(Material type, int amount, short damage) {
         return new ItemStackWrapper(new ItemStack(type, amount, damage));
@@ -35,6 +39,11 @@ public  class Items {
     @SuppressWarnings("deprecation")
     public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount, short damage) {
         return getMetaReference(new ItemStack(type, amount, damage));
+    }
+    
+    @SuppressWarnings("deprecation")
+    public static ChainItemMeta createItemAndAcquireChainMetaReference(Material type, int amount, short damage) {
+        return getMetaReference(new ItemStack(type, amount, damage)).chain();
     }
 
     @SuppressWarnings("deprecation")
@@ -45,6 +54,11 @@ public  class Items {
     @SuppressWarnings("deprecation")
     public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount, short damage, Byte data) {
         return getMetaReference(new ItemStack(type, amount, damage, data));
+    }
+    
+    @SuppressWarnings("deprecation")
+    public static ChainItemMeta createItemAndAcquireChainMetaReference(Material type, int amount, short damage, Byte data) {
+        return getMetaReference(new ItemStack(type, amount, damage, data)).chain();
     }
     
     public static ItemMetaClip createItemMetaClip() {

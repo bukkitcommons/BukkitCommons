@@ -3,6 +3,7 @@ package org.bukkit.commons.item;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import org.bukkit.Material;
@@ -31,16 +32,56 @@ public class ItemMetaClip implements ItemMetaSupplier {
         return meta;
     }
     
+    /**
+     * 
+     * @param itemStack
+     * @return
+     */
+    public ItemStack applyFor(ItemStack itemStack) {
+        itemStack.setItemMeta(applyFor(itemStack.getItemMeta()));
+        return itemStack;
+    }
+    
+    /**
+     * 
+     * @param itemMeta
+     * @return
+     */
     public ItemMeta applyFor(ItemMeta itemMeta) {
-        if (itemMeta.getDisplayName().equals(EMPTY_META.getDisplayName()))
+        // Only write non-exist properties
+        if (!itemMeta.hasDisplayName() && meta.hasDisplayName())
             itemMeta.setDisplayName(meta.getDisplayName());
         
-        if (itemMeta.getEnchants().isEmpty() && meta.hasEnchants())
-            for (Entry<Enchantment, Integer> enchantment : meta.getEnchants().entrySet())
-                itemMeta.addEnchant(enchantment.getKey(), enchantment.getValue(), true);
+        if (!itemMeta.hasLocalizedName() && meta.hasLocalizedName())
+            itemMeta.setLocalizedName(meta.getLocalizedName());
+        
+        if (meta.hasEnchants()) {
+            if (!itemMeta.hasEnchants()) {
+                for (Entry<Enchantment, Integer> enchantment : meta.getEnchants().entrySet())
+                    itemMeta.addEnchant(enchantment.getKey(), enchantment.getValue(), true);
+            } else {
+                for (Entry<Enchantment, Integer> enchantment : meta.getEnchants().entrySet())
+                    // Do not override exist enchant level
+                    if (!itemMeta.hasEnchant(enchantment.getKey()))
+                        itemMeta.addEnchant(enchantment.getKey(), enchantment.getValue(), true);
+            }
+        }
         
         if (!itemMeta.hasLore() && meta.hasLore())
             itemMeta.setLore(meta.getLore());
+        
+        if (meta.isUnbreakable())
+            itemMeta.setUnbreakable(true);
+        
+        if (meta.getItemFlags() != null && !meta.getItemFlags().isEmpty()) { // TODO: figure out this
+            itemMeta.addItemFlags(meta.getItemFlags().toArray(new ItemFlag[meta.getItemFlags().size()])); // TODO optimize
+        }
+        
+        if (meta.hasAttributeModifiers()) {
+            for (Entry<Attribute, AttributeModifier> attributeModifier : meta.getAttributeModifiers().entries()) {
+                meta.addAttributeModifier(attributeModifier.getKey(), attributeModifier.getValue());
+            }
+        }
         
         return itemMeta;
     }
