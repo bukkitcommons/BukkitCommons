@@ -24,19 +24,11 @@ public class ChainItemMeta implements ItemStackSupplier, ItemMetaSupplier {
     protected final ItemStack item;
     protected final ItemMeta meta;
     
-    /**
-     * 
-     * @return
-     */
     @Override
     public ItemMeta toItemMeta() {
         return meta;
     }
     
-    /**
-     * 
-     * @return
-     */
     @Override
     public ItemStack toItemStack() {
         return item;

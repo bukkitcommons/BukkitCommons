@@ -23,8 +23,20 @@ public class IntReference implements Present {
         return ++value;
     }
     
+    public int add(int toAdd) {
+        return value += toAdd;
+    }
+    
     public int addThen() {
         return value++;
+    }
+    
+    public int addThen(int toAdd) {
+        return value =+ toAdd;
+    }
+    
+    public int sum(int toSum) {
+        return value + toSum;
     }
     
     public boolean isPresent() {

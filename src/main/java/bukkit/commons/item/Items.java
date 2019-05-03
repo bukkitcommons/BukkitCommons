@@ -20,7 +20,11 @@ public  class Items {
     }
     
     public static ItemStackWrapper createItem(Material type) {
-        return new ItemStackWrapper(new ItemStack(type));
+        return acquireItemWrapper(new ItemStack(type));
+    }
+    
+    public static ItemStackWrapper acquireItemWrapper(ItemStack itemStack) {
+        return new ItemStackWrapper(itemStack);
     }
         
     public static ItemMetaReference createItemAndAcquireMetaReference(Material type) {
@@ -28,7 +32,7 @@ public  class Items {
     }
     
     public static ItemStackWrapper createItem(Material type, int amount) {
-        return new ItemStackWrapper(new ItemStack(type, amount));
+        return acquireItemWrapper(new ItemStack(type, amount));
     }
     
     public static ItemMetaReference createItemAndAcquireMetaReference(Material type, int amount) {
@@ -41,7 +45,7 @@ public  class Items {
     
     @SuppressWarnings("deprecation")
     public static ItemStackWrapper createItem(Material type, int amount, short damage) {
-        return new ItemStackWrapper(new ItemStack(type, amount, damage));
+        return acquireItemWrapper(new ItemStack(type, amount, damage));
     }
     
     @SuppressWarnings("deprecation")
@@ -56,7 +60,7 @@ public  class Items {
 
     @SuppressWarnings("deprecation")
     public static ItemStackWrapper createItem(Material type, int amount, short damage, Byte data) {
-        return new ItemStackWrapper(new ItemStack(type, amount, damage, data));
+        return acquireItemWrapper(new ItemStack(type, amount, damage, data));
     }
     
     @SuppressWarnings("deprecation")

@@ -2,6 +2,8 @@ package bukkit.commons.inventory;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -12,6 +14,10 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Inventories {
     
+    public InventoryCreator acquireInventoryCreator(Inventory inventory) {
+        return new InventoryCreator(inventory);
+    }
+    
     /**
      * 
      * @param inventory
@@ -19,13 +25,16 @@ public class Inventories {
      * @return
      */
     @SuppressWarnings("deprecation")
-    public boolean takeItem(Inventory inventory, ItemStack itemToTake) {
+    public boolean takeItem(@Nonnull Inventory inventory, @Nonnull ItemStack itemToTake) {
         int totalMatchedAmount = 0;
         int toTakeAmount = itemToTake.getAmount();
         List<Integer> matchedSlots = Lists.newArrayList();
         
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack itemStack = inventory.getItem(i);
+            
+            if (itemStack == null)
+                continue;
             
             // match item data
             if (itemStack.getType() == itemToTake.getType() &&
@@ -60,6 +69,10 @@ public class Inventories {
                             // more than to take
                             for (int index : matchedSlots) {
                                 ItemStack item = inventory.getItem(index);
+                                
+                                if (item == null)
+                                    continue;
+                                
                                 // this will always bigger than stack amount except sometimes at the last item
                                 int toTake = toTakeAmount - takenAmount;
                                 stackAmount = item.getAmount();

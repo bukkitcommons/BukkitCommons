@@ -25,17 +25,11 @@ public class ItemMetaReference implements ItemMeta, ItemStackSupplier, ItemMetaS
     private final ItemStack item;
     private final ItemMeta meta;
     
-    /**
-     * 
-     */
     @Override
     public ItemStack toItemStack() {
         return item;
     }
     
-    /**
-     * 
-     */
     @Override
     public ItemMeta toItemMeta() {
         return meta;
