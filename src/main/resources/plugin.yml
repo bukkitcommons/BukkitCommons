@@ -1,6 +1,6 @@
 name: BukkitCommons
-main: bukkit.plugin.CommonsPlugin
+main: cc.bukkit.plugin.CommonsPlugin
 version: 1.0.0
 load: STARTUP
-website: https://dev.bukkit.org/
+website: https://bukkit.cc/
 description: Next-generation plugin development framework for Bukkit API.
