@@ -30,6 +30,7 @@ public final class BukkitCommons {
     // ------------------------------
     // Bukkit Commons
     // ------------------------------
+    // Ticker
     public static int currentTick() {
         return CommonTicker.getInstance().currentTick();
     }

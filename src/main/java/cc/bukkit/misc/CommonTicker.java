@@ -34,6 +34,10 @@ public final class CommonTicker implements Runnable {
         return Singleton.INSTANCE;
     }
     
+    // ------------------------------
+    // Helper
+    // ------------------------------
+    
     public static long toTicks(TimeUnit unit, long duration) {
         return unit.toSeconds(duration) * 20;
     }

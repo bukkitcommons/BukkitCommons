@@ -13,8 +13,12 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class Configurations {
+    public static YamlConfiguration parseConfiguration(File configFile, Class<?> providerClass) {
+        return parseConfiguration(loadYamlConfiguration(configFile), providerClass);
+    }
+    
     @SneakyThrows
-    public static YamlConfiguration loadAndParseConfiguration(YamlConfiguration config, Class<?> providerClass) {
+    public static YamlConfiguration parseConfiguration(YamlConfiguration config, Class<?> providerClass) {
         
         for (Field field : providerClass.getDeclaredFields()) {
             Node node = field.getAnnotation(Node.class);
@@ -42,7 +46,7 @@ public final class Configurations {
                 if (view != null || configuredValue == null) { 
                     config.set(path, ConfigurationSerializer.serialize(defaultValue, field.getType()));
                 } else {
-                    field.set(null, ConfigurationSerializer.deserialize(configuredValue, field.getType()));
+                    field.set(null, ConfigurationSerializer.deserialize(configuredValue, field.get(null)));
                 }
                 
                 // add final back
@@ -63,21 +67,12 @@ public final class Configurations {
      * @return
      */
     @SneakyThrows
-    public static YamlConfiguration createFileOrLoadYamlConfiguration(File file) {
+    public static YamlConfiguration loadYamlConfiguration(File file) {
+        file.getParentFile().mkdirs();
+        
         if (!file.exists())
             file.createNewFile();
         
         return YamlConfiguration.loadConfiguration(file);
-    }
-    
-    /**
-     * 
-     * @param file
-     * @return
-     */
-    @SneakyThrows
-    public static YamlConfiguration createFileAndParentsOrLoadYamlConfiguration(File file) {
-        file.getParentFile().mkdirs();
-        return createFileOrLoadYamlConfiguration(file);
     }
 }

@@ -1,12 +1,13 @@
 package cc.bukkit.entity;
 
-import javax.annotation.concurrent.NotThreadSafe;
+import java.security.cert.PKIXRevocationChecker.Option;
+import java.util.Optional;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-@NotThreadSafe
 public class Players implements Listener {
     /**
      * 
@@ -42,5 +43,19 @@ public class Players implements Listener {
     public static Player playSound(Player player, Sound sound, float volume, float pitch) {
         player.playSound(player.getLocation(), sound, volume, pitch);
         return player;
+    }
+    
+    /**
+     * 
+     * @param playerName
+     * @param command
+     * @return
+     */
+    public static Optional<Player> dispatchCommand(String playerName, String command) {
+        Player player = Bukkit.getPlayerExact(playerName);
+        if (player != null)
+            Bukkit.dispatchCommand(player, command);
+        
+        return Optional.ofNullable(player);
     }
 }
