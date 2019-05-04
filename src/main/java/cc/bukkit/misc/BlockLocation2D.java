@@ -47,7 +47,7 @@ public final class BlockLocation2D implements Serializable {
         return world.concat(".") + x + "." + z;
     }
     
-    public BlockLocation2D deserialize(String serialized) {
+    public static BlockLocation2D deserialize(String serialized) {
         String[] data = StringUtils.split(serialized, ".");
         return new BlockLocation2D(data[0], Integer.valueOf(data[1]), Integer.valueOf(data[2]));
     }

@@ -42,7 +42,7 @@ public final class SimpleLocation2D implements Serializable {
         return world.concat(".") + x + "." + z;
     }
     
-    public SimpleLocation2D deserialize(String serialized) {
+    public static SimpleLocation2D deserialize(String serialized) {
         String[] data = StringUtils.split(serialized, ".");
         return new SimpleLocation2D(data[0], Double.valueOf(data[1]), Double.valueOf(data[2]));
     }

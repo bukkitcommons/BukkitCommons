@@ -38,6 +38,11 @@ public class InventoryCreator implements InventorySupplier {
         return fill(itemStack, 0, inventory.getSize());
     }
     
+    /**
+     * 
+     * @param function
+     * @return
+     */
     public InventoryCreator fill(BiFunction<Integer, ItemStack, ItemStack> function) {
         return fill(function, 0, inventory.getSize());
     }
@@ -162,6 +167,16 @@ public class InventoryCreator implements InventorySupplier {
             if (item != null)
                 consumer.accept(i, item);
         }
+        return this;
+    }
+    
+    /**
+     * 
+     * @param itemStack
+     * @return
+     */
+    public InventoryCreator addItemToEmptySlot(ItemStack itemStack) {
+        inventory.setItem(inventory.firstEmpty(), itemStack);
         return this;
     }
 }

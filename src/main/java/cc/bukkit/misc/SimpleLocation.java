@@ -44,7 +44,7 @@ public final class SimpleLocation implements Serializable {
         return world.concat(".") + x + "." + y + "." + z;
     }
     
-    public SimpleLocation deserialize(String serialized) {
+    public static SimpleLocation deserialize(String serialized) {
         String[] data = StringUtils.split(serialized, ".");
         return new SimpleLocation(data[0], Double.valueOf(data[1]), Double.valueOf(data[2]), Double.valueOf(data[3]));
     }

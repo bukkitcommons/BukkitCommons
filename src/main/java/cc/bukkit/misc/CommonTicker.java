@@ -1,5 +1,7 @@
 package cc.bukkit.misc;
 
+import java.util.concurrent.TimeUnit;
+
 import org.bukkit.Bukkit;
 
 import cc.bukkit.plugin.CommonsPlugin;
@@ -30,5 +32,9 @@ public final class CommonTicker implements Runnable {
     
     public static CommonTicker getInstance() {
         return Singleton.INSTANCE;
+    }
+    
+    public static long toTicks(TimeUnit unit, long duration) {
+        return unit.toSeconds(duration) * 20;
     }
 }

@@ -49,7 +49,7 @@ public final class BlockLocation implements Serializable {
         return world.concat(".") + x + "." + y + "." + z;
     }
     
-    public BlockLocation deserialize(String serialized) {
+    public static BlockLocation deserialize(String serialized) {
         String[] data = StringUtils.split(serialized, ".");
         return new BlockLocation(data[0], Integer.valueOf(data[1]), Integer.valueOf(data[2]), Integer.valueOf(data[3]));
     }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
@@ -13,8 +14,10 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 import cc.bukkit.misc.BlockLocation;
 import cc.bukkit.misc.CommonTicker;
@@ -29,6 +32,10 @@ public final class BukkitCommons {
     // ------------------------------
     public static int currentTick() {
         return CommonTicker.getInstance().currentTick();
+    }
+    
+    public static long toTicks(TimeUnit unit, long duration) {
+        return CommonTicker.toTicks(unit, duration);
     }
     
     // Simple location
@@ -52,6 +59,10 @@ public final class BukkitCommons {
         return new SimpleLocation(block.getLocation());
     }
     
+    public static SimpleLocation createSimpleLocation(String serialized) {
+        return SimpleLocation.deserialize(serialized);
+    }
+    
     // Block location
     public static BlockLocation createBlockLocation(String world, int x, int y, int z) {
         return new BlockLocation(world, x, y, z);
@@ -67,6 +78,10 @@ public final class BukkitCommons {
     
     public static BlockLocation createBlockLocation(Location location) {
         return new BlockLocation(location);
+    }
+    
+    public static BlockLocation createBlockLocation(String serialized) {
+        return BlockLocation.deserialize(serialized);
     }
     
     // ------------------------------
@@ -117,6 +132,41 @@ public final class BukkitCommons {
     public static String broadcast(@Nonnull String message) {
         Bukkit.broadcastMessage(message);
         return message;
+    }
+    
+    public static String info(@Nonnull String message) {
+        Bukkit.getLogger().info(message);
+        return message;
+    }
+    
+    public static String warning(@Nonnull String message) {
+        Bukkit.getLogger().warning(message);
+        return message;
+    }
+    
+    public static String severe(@Nonnull String message) {
+        Bukkit.getLogger().severe(message);
+        return message;
+    }
+    
+    /**
+     * 
+     * @param sender
+     * @param perm
+     * @return
+     */
+    public static boolean hasPerm(CommandSender sender, String perm) {
+        return sender.isOp() || sender.hasPermission(perm);
+    }
+    
+    /**
+     * 
+     * @param sender
+     * @param perm
+     * @return
+     */
+    public static boolean hasPerm(CommandSender sender, Permission perm) {
+        return sender.isOp() || sender.hasPermission(perm);
     }
     
     /**
