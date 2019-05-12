@@ -31,7 +31,7 @@ public abstract class ItemJson {
     /**
      * 
      * @param ItemStack
-     * @return ItemStack's json, can use on net.md_5.bungee.chat.
+     * @return ItemStack's json, can use on net.md_5.bungee.chat and tellrawjson.
      */
 	public static String saveJsonfromNMS(ItemStack bStack) throws Throwable {
 	    if (bStack.getType() == Material.AIR)
