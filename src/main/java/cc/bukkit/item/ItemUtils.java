@@ -43,4 +43,19 @@ public class ItemUtils {
 		ItemStack stack = cfg.getItemStack("item");
 		return stack;
 	}
+	/**
+	 * Get item's displayname.
+	 * @param ItemStack iStack
+	 * @return String itemDisplayName/Material name if no custom display name.
+	 */
+	public static String getDisplayName(ItemStack iStack){
+		ItemStack is = iStack.clone();
+		
+		if(is.hasItemMeta()&&is.getItemMeta().hasDisplayName()) {
+			return is.getItemMeta().getDisplayName();
+		}else {
+			return is.getType().name();
+		}
+		
+	}
 }
