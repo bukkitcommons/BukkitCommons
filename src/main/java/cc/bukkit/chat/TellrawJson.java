@@ -142,5 +142,4 @@ public class TellrawJson {
 	public void send(CommandSender sender) {
 		sender.spigot().sendMessage(builder.create());
 	}
-	
 }
