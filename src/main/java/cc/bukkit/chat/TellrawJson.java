@@ -22,8 +22,13 @@ public class TellrawJson {
 		return new TellrawJson();
 	}
 	
-	public TellrawJson append(String text) {
+	public TellrawJson text(String text) {
 		this.builder.append(text);
+		return this;
+	}
+	
+	public TellrawJson link(TellrawJson tellrawJson) {
+		this.builder.append(tellrawJson.getCuttentComponentBuilder().create());
 		return this;
 	}
 	
