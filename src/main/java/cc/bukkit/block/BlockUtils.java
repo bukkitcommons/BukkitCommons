@@ -5,7 +5,9 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
+import org.bukkit.block.data.Directional;
 import org.bukkit.inventory.InventoryHolder;
+import org.maxgamer.quickshop.Util.Util;
 
 public class BlockUtils {
 	/**
@@ -36,6 +38,27 @@ public class BlockUtils {
 			return null;
 		}else{
 			return null;
+		}
+	}
+	
+	/**
+	 * Fetches the block which the given sign is attached to
+	 * 
+	 * @param sign
+	 *            The sign which is attached
+	 * @return The block the sign is attached to
+	 */
+	public static Block getAttached(Block b) {
+		try {	
+			if(b.getBlockData() instanceof Directional) {
+				Directional directional = (Directional) b.getBlockData();
+				return b.getRelative(directional.getFacing().getOppositeFace());
+			}else {
+				return null;
+			}
+			// sometimes??
+		} catch (NullPointerException|ClassCastException e) {
+			return null; // /Not sure what causes this.
 		}
 	}
 	
