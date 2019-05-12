@@ -3,6 +3,9 @@ package cc.bukkit.configuration;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Set;
+
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import cc.bukkit.configuration.annotation.Node;
@@ -75,4 +78,20 @@ public final class Configurations {
         
         return YamlConfiguration.loadConfiguration(file);
     }
+    
+    public static void parseColours(YamlConfiguration config) {
+		Set<String> keys = config.getKeys(true);
+		for (String key : keys) {
+			String filtered = config.getString(key);
+			if (filtered.startsWith("MemorySection")) {
+				continue;
+			}
+			filtered = ChatColor.translateAlternateColorCodes('&', filtered);
+			config.set(key, filtered);
+		}
+	}
+	public static String parseColours(String text) {
+		text = ChatColor.translateAlternateColorCodes('&', text);
+		return text;
+	}
 }

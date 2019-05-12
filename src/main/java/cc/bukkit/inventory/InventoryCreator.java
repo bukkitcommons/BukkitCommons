@@ -14,7 +14,7 @@ public class InventoryCreator implements InventorySupplier {
     private final Inventory inventory;
     
     public static ItemStack BREAK = new ItemStack(Material.BARRIER);
-
+   
     @Override
     public Inventory toInventory() {
         return inventory;
