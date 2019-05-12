@@ -19,17 +19,17 @@ public class CustomTimer {
 	 * @param UUID timer's uuid
 	 * @return long time(nano)
 	 */
-	public static long getTimer(UUID uuid) {
-		return System.nanoTime()-timerMap.get(uuid);
+	public static long getTimer(UUID timerUUID) {
+		return System.nanoTime()-timerMap.get(timerUUID);
 	}
 	/**
 	 * Return how long time running when timer set and destory the timer.
 	 * @param String logs
 	 * @return long time(nano)
 	 */
-	public static long endTimer(UUID uuid) {
-		long time =System.nanoTime()-timerMap.get(uuid);
-		timerMap.remove(uuid);
+	public static long endTimer(UUID timerUUID) {
+		long time =System.nanoTime()-timerMap.get(timerUUID);
+		timerMap.remove(timerUUID);
 		return time;
 	}
 }
