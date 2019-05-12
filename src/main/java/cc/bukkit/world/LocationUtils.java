@@ -96,5 +96,4 @@ public class LocationUtils {
 			return false;
 		return true;
 	}
-	
 }
