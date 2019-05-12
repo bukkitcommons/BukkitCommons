@@ -1,7 +1,7 @@
 package cc.bukkit.entity;
 
-import java.security.cert.PKIXRevocationChecker.Option;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -53,6 +53,31 @@ public class Players implements Listener {
      */
     public static Optional<Player> dispatchCommand(String playerName, String command) {
         Player player = Bukkit.getPlayerExact(playerName);
+        if (player != null)
+            Bukkit.dispatchCommand(player, command);
+        
+        return Optional.ofNullable(player);
+    }
+    /**
+     * 
+     * @param player
+     * @param command
+     * @return
+     */
+    public static Optional<Player> dispatchCommand(Player player, String command) {
+        if (player != null)
+            Bukkit.dispatchCommand(player, command);
+        
+        return Optional.ofNullable(player);
+    }
+    /**
+     * 
+     * @param UUID
+     * @param command
+     * @return
+     */
+    public static Optional<Player> dispatchCommand(UUID playerUUID, String command) {
+    	Player player = Bukkit.getPlayer(playerUUID);
         if (player != null)
             Bukkit.dispatchCommand(player, command);
         
