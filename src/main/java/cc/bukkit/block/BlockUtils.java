@@ -7,7 +7,6 @@ import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
 import org.bukkit.block.data.Directional;
 import org.bukkit.inventory.InventoryHolder;
-import org.maxgamer.quickshop.Util.Util;
 
 public class BlockUtils {
 	/**
