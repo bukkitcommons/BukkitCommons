@@ -38,6 +38,9 @@ public class TellrawJson {
 		this.builder.append(tellrawJson.getCuttentComponentBuilder().create());
 		return this.clone();
 	}
+	public static TellrawJson link(TellrawJson tellrawJsonA, TellrawJson tellrawJsonB) {
+		return tellrawJsonA.link(tellrawJsonB);
+	}
 	
 	public TellrawJson hoverText(String text) {
 		if(setupedHover)
@@ -148,5 +151,8 @@ public class TellrawJson {
 	}
 	public void send(CommandSender sender) {
 		sender.spigot().sendMessage(builder.create());
+	}
+	public static void send(CommandSender sender, TellrawJson tellrawJson) {
+		sender.spigot().sendMessage(tellrawJson.builder.create());
 	}
 }

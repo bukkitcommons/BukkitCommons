@@ -2,7 +2,6 @@ package cc.bukkit.test.item;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-
 import cc.bukkit.item.ItemMetaReference;
 import cc.bukkit.item.Items;
 
