@@ -93,6 +93,46 @@ public class TellrawJson {
 		this.builder.event(new ClickEvent(net.md_5.bungee.api.chat.ClickEvent.Action.OPEN_FILE, file));
 		return this;
 	}
+	public TellrawJson color(net.md_5.bungee.api.ChatColor color) {
+		this.builder.color(color);
+		return this;
+	}
+	public TellrawJson setBold(boolean bold) {
+		this.builder.bold(bold);
+		return this;
+	}
+	public TellrawJson setItalic(boolean italic) {
+		this.builder.italic(italic);
+		return this;
+	}
+	public TellrawJson setObfuscated(boolean obfuscated) {
+		this.builder.obfuscated(obfuscated);
+		return this;
+	}
+	public TellrawJson setUnderlined(boolean underlined) {
+		this.builder.underlined(underlined);
+		return this;
+	}
+	public TellrawJson setBold() {
+		this.builder.bold(true);
+		return this;
+	}
+	public TellrawJson setItalic() {
+		this.builder.italic(true);
+		return this;
+	}
+	public TellrawJson setObfuscated() {
+		this.builder.obfuscated(true);
+		return this;
+	}
+	public TellrawJson setUnderlined() {
+		this.builder.underlined(true);
+		return this;
+	}
+	public TellrawJson reset() {
+		this.builder.reset();
+		return this;
+	}
 	public TellrawJson getCurrentTellrawJson() {
 		return this;
 	}
