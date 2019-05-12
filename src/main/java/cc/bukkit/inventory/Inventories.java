@@ -1,12 +1,12 @@
 package cc.bukkit.inventory;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
 import com.google.common.collect.Lists;
 
 import lombok.experimental.UtilityClass;
@@ -108,5 +108,23 @@ public class Inventories {
         // not found at all or actually insufficient
         return false;
     }
+    /**
+	 * Counts the number of items in the given inventory where
+	 * Util.matches(inventory item, item) is true.
+	 * 
+	 * @param inv
+	 *            The inventory to search
+	 * @param item
+	 *            The ItemStack to search for
+	 * @return The number of items that match in this inventory.
+	 */
+	public static int countItems(Inventory inv, ItemStack item) {
+		int items = 0;
+		HashMap<Integer, ? extends ItemStack> map = inv.all(item);
+		for (Integer locationInInventory : map.keySet()) {
+			items+=inv.getItem(locationInInventory).getAmount();
+		}
+		return items;
+	}
     
 }
