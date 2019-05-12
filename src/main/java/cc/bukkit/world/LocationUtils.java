@@ -96,4 +96,55 @@ public class LocationUtils {
 			return false;
 		return true;
 	}
+	/**
+	 * Check two Location is equals on 3D.
+	 * @param Location loc1, Location loc2
+	 * @return boolean yes or not
+	 */
+	public static boolean equalsLocation3D(Location loc1, Location loc2) {
+		boolean equalsX = (loc1.getX()==loc2.getX());
+		boolean equalsY = (loc1.getY()==loc2.getY());
+		boolean equalsZ = (loc1.getZ()==loc2.getZ());
+		if(equalsX==equalsY==equalsZ)
+			return true;
+		return false;
+	}
+	/**
+	 * Check two Location is equals on 2D.
+	 * @param Location loc1, Location loc2
+	 * @return boolean yes or not
+	 */
+	public static boolean equalsLocation2D(Location loc1, Location loc2) {
+		boolean equalsX = (loc1.getX()==loc2.getX());
+		boolean equalsZ = (loc1.getZ()==loc2.getZ());
+		if(equalsX==equalsZ)
+			return true;
+		return false;
+	}
+	
+	/**
+	 * Check two Location is equals on 3D block position.
+	 * @param Location loc1, Location loc2
+	 * @return boolean yes or not
+	 */
+	public static boolean equalsLocation3DBlockPosition(Location loc1, Location loc2) {
+		boolean equalsX = (loc1.getBlockX()==loc2.getBlockX());
+		boolean equalsY = (loc1.getBlockY()==loc2.getBlockY());
+		boolean equalsZ = (loc1.getBlockZ()==loc2.getBlockZ());
+		if(equalsX==equalsY==equalsZ)
+			return true;
+		return false;
+	}
+	/**
+	 * Check two Location is equals on 2D block position.
+	 * @param Location loc1, Location loc2
+	 * @return boolean yes or not
+	 */
+	public static boolean equalsLocation2DBlockPosition(Location loc1, Location loc2) {
+		boolean equalsX = (loc1.getBlockX()==loc2.getBlockX());
+		boolean equalsZ = (loc1.getBlockZ()==loc2.getBlockZ());
+		if(equalsX==equalsZ)
+			return true;
+		return false;
+	}
 }
