@@ -147,7 +147,7 @@ public class TellrawJson {
 		return this;
 	}
 	public ComponentBuilder getCuttentComponentBuilder() {
-		return this.clone().builder;
+		return this.builder;
 	}
 	public void send(CommandSender sender) {
 		sender.spigot().sendMessage(builder.create());
