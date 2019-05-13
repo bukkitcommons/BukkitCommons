@@ -13,7 +13,7 @@ public class ColorfulChat {
      * @param colorcode custom
      * @return added colors text
      */
-	public static String colorfulRandom(String text, String[] colorcode) {
+	public static String colorfulRandom(String text, String... colorcode) {
 		Random random = new Random();
 		StringBuffer buffer = new StringBuffer();
 		char[] chars = text.toCharArray();
@@ -28,7 +28,7 @@ public class ColorfulChat {
      * @param colorcode custom
      * @return added colors text
      */
-	public static String colorfulNonRandom(String text, String[] colorcode) {
+	public static String colorfulNonRandom(String text, String... colorcode) {
 		StringBuffer buffer = new StringBuffer();
 		char[] chars = text.toCharArray();
 		int loc = 0;
