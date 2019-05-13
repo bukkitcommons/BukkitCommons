@@ -105,7 +105,7 @@ public class LocationUtils {
 		boolean equalsX = (loc1.getX()==loc2.getX());
 		boolean equalsY = (loc1.getY()==loc2.getY());
 		boolean equalsZ = (loc1.getZ()==loc2.getZ());
-		if(equalsX==equalsY==equalsZ)
+		if(equalsX==true && equalsY==true && equalsZ==true)
 			return true;
 		return false;
 	}
@@ -117,7 +117,7 @@ public class LocationUtils {
 	public static boolean equalsLocation2D(Location loc1, Location loc2) {
 		boolean equalsX = (loc1.getX()==loc2.getX());
 		boolean equalsZ = (loc1.getZ()==loc2.getZ());
-		if(equalsX==equalsZ)
+		if(equalsX==true && equalsZ==true)
 			return true;
 		return false;
 	}
@@ -131,7 +131,7 @@ public class LocationUtils {
 		boolean equalsX = (loc1.getBlockX()==loc2.getBlockX());
 		boolean equalsY = (loc1.getBlockY()==loc2.getBlockY());
 		boolean equalsZ = (loc1.getBlockZ()==loc2.getBlockZ());
-		if(equalsX==equalsY==equalsZ)
+		if(equalsX==true && equalsY==true && equalsZ==true)
 			return true;
 		return false;
 	}
@@ -143,7 +143,7 @@ public class LocationUtils {
 	public static boolean equalsLocation2DBlockPosition(Location loc1, Location loc2) {
 		boolean equalsX = (loc1.getBlockX()==loc2.getBlockX());
 		boolean equalsZ = (loc1.getBlockZ()==loc2.getBlockZ());
-		if(equalsX==equalsZ)
+		if(equalsX==true && equalsZ==true)
 			return true;
 		return false;
 	}
