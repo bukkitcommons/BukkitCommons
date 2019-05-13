@@ -35,4 +35,13 @@ public class ListenerRegister {
 			}
 		}
 	}
+	/**
+     * Fast un-register multi-listener.
+     * @param plugin The plugin main class
+     * @param listeners The listeners you want unregister
+     * @return
+     */
+	public static ArrayList<RegisteredListener> getRegisteredListeners(JavaPlugin plugin) {
+		return HandlerList.getRegisteredListeners(plugin);
+	}
 }
