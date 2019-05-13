@@ -2,11 +2,12 @@ package cc.bukkit.block;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
 import org.bukkit.block.data.Directional;
 import org.bukkit.inventory.InventoryHolder;
+
+import cc.bukkit.world.LocationUtils;
 
 public class BlockUtils {
 	/**
@@ -30,9 +31,9 @@ public class BlockUtils {
 
 			Chest leftC = (Chest)left;
 			Chest rightC = (Chest)right;
-			if(equalsBlockStateLocation(oneSideOfChest, leftC)) 
+			if(LocationUtils.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), rightC.getLocation())) 
 				return rightC.getBlock();
-			if(equalsBlockStateLocation(oneSideOfChest, leftC)) 
+			if(LocationUtils.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), leftC.getLocation())) 
 				return leftC.getBlock();
 			return null;
 		}else{
@@ -59,9 +60,5 @@ public class BlockUtils {
 		} catch (NullPointerException|ClassCastException e) {
 			return null; // /Not sure what causes this.
 		}
-	}
-	
-	private static final boolean equalsBlockStateLocation(BlockState b1, BlockState b2) {
-	    return b1.getX() == b2.getX() && b1.getY() == b2.getY() && b1.getZ() == b2.getZ();
 	}
 }
