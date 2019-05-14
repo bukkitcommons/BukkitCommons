@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ListenerRegister {
+public class Registry {
 	/**
      * Fast register multi-listener.
      * @param plugin The plugin main class

@@ -1,4 +1,4 @@
-package cc.bukkit.misc;
+package cc.bukkit.misc.location;
 
 import java.io.Serializable;
 

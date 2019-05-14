@@ -2,10 +2,10 @@ package cc.bukkit.math;
 
 import java.util.Arrays;
 
-public class SortNumbers {
+public class IntSorter {
 		int big = 0;
 		int small = 0;
-		public SortNumbers(int... nums) {
+		public IntSorter(int... nums) {
 			if(nums.length==0)
 				throw new IllegalArgumentException("You must give more than 1 args.");
 			Arrays.sort(nums);

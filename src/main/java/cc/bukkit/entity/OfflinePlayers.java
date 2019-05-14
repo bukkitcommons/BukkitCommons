@@ -1,4 +1,4 @@
-package cc.bukkit.server;
+package cc.bukkit.entity;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import lombok.SneakyThrows;
 
-public class PlayerdataUtils {
+public class OfflinePlayers {
 	/**
 	 * Get playerdata File of a player
 	 * 

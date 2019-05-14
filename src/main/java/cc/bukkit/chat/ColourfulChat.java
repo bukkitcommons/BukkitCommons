@@ -6,7 +6,7 @@ import java.util.Random;
 
 import org.bukkit.ChatColor;
 
-public class ColorfulChat {
+public class ColourfulChat {
 	/**
      * Add colors on text with random custom colors
      * @param text need add color string

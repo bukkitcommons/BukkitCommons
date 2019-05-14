@@ -3,9 +3,9 @@ package cc.bukkit.world;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
-import cc.bukkit.math.NumberUtils;
+import cc.bukkit.area.Areas;
 
-public class LocationUtils {
+public class Locations {
 	/**
 	 * Use yaw to calc the BlockFace, You can use player.getFacing() in 1.13.2 and after builds.
 	 * @param float yaw
@@ -34,11 +34,11 @@ public class LocationUtils {
 		int loc2X = loc2.getBlockX();
 		int loc2Y = loc2.getBlockY();
 		int loc2Z = loc2.getBlockZ();
-		if(!NumberUtils.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!Areas.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!NumberUtils.between_checkBorder(needCheckLocation.getBlockY(), loc1Y, loc2Y))
+		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Y, loc2Y))
 			return false;
-		if(!NumberUtils.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 		
@@ -55,11 +55,11 @@ public class LocationUtils {
 		int loc2X = loc2.getBlockX();
 		int loc2Y = loc2.getBlockY();
 		int loc2Z = loc2.getBlockZ();
-		if(!NumberUtils.between(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!Areas.between(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!NumberUtils.between(needCheckLocation.getBlockY(), loc1Y, loc2Y))
+		if(!Areas.between(needCheckLocation.getBlockY(), loc1Y, loc2Y))
 			return false;
-		if(!NumberUtils.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!Areas.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 	}
@@ -73,9 +73,9 @@ public class LocationUtils {
 		int loc1Z = loc1.getBlockZ();
 		int loc2X = loc2.getBlockX();
 		int loc2Z = loc2.getBlockZ();
-		if(!NumberUtils.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!Areas.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!NumberUtils.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 		
@@ -90,9 +90,9 @@ public class LocationUtils {
 		int loc1Z = loc1.getBlockZ();
 		int loc2X = loc2.getBlockX();
 		int loc2Z = loc2.getBlockZ();
-		if(!NumberUtils.between(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!Areas.between(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!NumberUtils.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!Areas.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 	}

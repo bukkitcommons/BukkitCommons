@@ -1,6 +1,6 @@
 package cc.bukkit.chat;
 
-public class PrettifytextFormatter {
+public class PrettifyFormatter {
 	/**
 	 * Converts a name like IRON_INGOT into Iron Ingot to improve readability
 	 * 

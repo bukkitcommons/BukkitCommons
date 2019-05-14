@@ -19,9 +19,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
-import cc.bukkit.misc.BlockLocation;
 import cc.bukkit.misc.CommonTicker;
-import cc.bukkit.misc.SimpleLocation;
+import cc.bukkit.misc.location.BlockLocation;
+import cc.bukkit.misc.location.SimpleLocation;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 

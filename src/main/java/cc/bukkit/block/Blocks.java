@@ -7,9 +7,9 @@ import org.bukkit.block.DoubleChest;
 import org.bukkit.block.data.Directional;
 import org.bukkit.inventory.InventoryHolder;
 
-import cc.bukkit.world.LocationUtils;
+import cc.bukkit.world.Locations;
 
-public class BlockUtils {
+public class Blocks {
 	/**
 	 * Returns the chest attached to the given chest. The given block must be a
 	 * chest.
@@ -31,9 +31,9 @@ public class BlockUtils {
 
 			Chest leftC = (Chest)left;
 			Chest rightC = (Chest)right;
-			if(LocationUtils.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), rightC.getLocation())) 
+			if(Locations.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), rightC.getLocation())) 
 				return rightC.getBlock();
-			if(LocationUtils.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), leftC.getLocation())) 
+			if(Locations.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), leftC.getLocation())) 
 				return leftC.getBlock();
 			return null;
 		}else{

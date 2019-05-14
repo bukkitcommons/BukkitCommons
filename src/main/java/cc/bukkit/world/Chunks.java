@@ -2,7 +2,7 @@ package cc.bukkit.world;
 
 import org.bukkit.Location;
 
-public class ChunkUtils {
+public class Chunks {
 	/**
 	 * Returns true if the given location is loaded or not.
 	 * 
