@@ -28,7 +28,7 @@ public class ServerTPS {
         }
 	    
 	}
-    private static Class<?> getNMSClass(String className) {
+    public static Class<?> getNMSClass(String className) {
     	String name = Bukkit.getServer().getClass().getPackage().getName();
 	    String version = name.substring(name.lastIndexOf('.') + 1);
         try {

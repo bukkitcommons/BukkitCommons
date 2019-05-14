@@ -84,28 +84,4 @@ public class Players implements Listener {
         return Optional.ofNullable(player);
     }
 
-    /**
-     *
-     * @param uuid
-     * @return
-     */
-    /*
-    public static Player getOfflinePlayer(UUID uuid) {
-        String version = "v" + Bukkit.getServer().getClass().getPackage().getName().split("v")[1];
-        GameProfile profile = new GameProfile(uuid,Bukkit.getOfflinePlayer(uuid));
-        MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
-        EntityPlayer entity;
-        if(version.equals("v1_14_R1")){
-            entity = new EntityPlayer(server, server.getWorldServer(DimensionManager.a(0)), profile, new PlayerInteractManager(server.getWorldServer(DimensionManager.a(0))));
-        } else {
-            entity = new EntityPlayer(server, server.getWorldServer(0), profile, new PlayerInteractManager(server.getWorldServer(0)));
-        }
-        Player target = entity == null ? null : entity.getBukkitEntity();
-        if (target != null) {
-            target.loadData();
-            return target;
-        }
-        return target;
-    }
-    */
 }
