@@ -12,7 +12,7 @@ import com.google.common.collect.Lists;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class Inventories {
+public class Invs {
     
     public InventoryCreator acquireInventoryCreator(Inventory inventory) {
         return new InventoryCreator(inventory);

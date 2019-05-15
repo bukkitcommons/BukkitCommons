@@ -1,8 +1,6 @@
-package cc.bukkit.area;
+package cc.bukkit.math;
 
-import cc.bukkit.math.IntSorter;
-
-public class Areas {
+public class MathHelper {
 	public static boolean between(int target, int int2, int int3) {
 		int[] array = {int2,int3};
 		IntSorter sortNumbers = new IntSorter(array);

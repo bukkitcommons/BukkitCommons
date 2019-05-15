@@ -3,7 +3,7 @@ package cc.bukkit.world;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
-import cc.bukkit.area.Areas;
+import cc.bukkit.math.MathHelper;
 
 public class Locations {
 	/**
@@ -34,11 +34,11 @@ public class Locations {
 		int loc2X = loc2.getBlockX();
 		int loc2Y = loc2.getBlockY();
 		int loc2Z = loc2.getBlockZ();
-		if(!Areas.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!MathHelper.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Y, loc2Y))
+		if(!MathHelper.between_checkBorder(needCheckLocation.getBlockY(), loc1Y, loc2Y))
 			return false;
-		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!MathHelper.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 		
@@ -55,11 +55,11 @@ public class Locations {
 		int loc2X = loc2.getBlockX();
 		int loc2Y = loc2.getBlockY();
 		int loc2Z = loc2.getBlockZ();
-		if(!Areas.between(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!MathHelper.between(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!Areas.between(needCheckLocation.getBlockY(), loc1Y, loc2Y))
+		if(!MathHelper.between(needCheckLocation.getBlockY(), loc1Y, loc2Y))
 			return false;
-		if(!Areas.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!MathHelper.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 	}
@@ -73,9 +73,9 @@ public class Locations {
 		int loc1Z = loc1.getBlockZ();
 		int loc2X = loc2.getBlockX();
 		int loc2Z = loc2.getBlockZ();
-		if(!Areas.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!MathHelper.between_checkBorder(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!Areas.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!MathHelper.between_checkBorder(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 		
@@ -90,9 +90,9 @@ public class Locations {
 		int loc1Z = loc1.getBlockZ();
 		int loc2X = loc2.getBlockX();
 		int loc2Z = loc2.getBlockZ();
-		if(!Areas.between(needCheckLocation.getBlockX(), loc1X, loc2X))
+		if(!MathHelper.between(needCheckLocation.getBlockX(), loc1X, loc2X))
 			return false;
-		if(!Areas.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
+		if(!MathHelper.between(needCheckLocation.getBlockY(), loc1Z, loc2Z))
 			return false;
 		return true;
 	}
