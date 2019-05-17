@@ -149,8 +149,14 @@ public class TellrawJson {
 	public ComponentBuilder getCuttentComponentBuilder() {
 		return this.builder;
 	}
-	public void send(CommandSender sender) {
+	public TellrawJson send(CommandSender sender) { // For performance
 		sender.spigot().sendMessage(builder.create());
+		return this;
+	}
+	public TellrawJson send(CommandSender... senders) {
+		for (CommandSender sender : senders)
+			sender.spigot().sendMessage(builder.create());
+		return this;
 	}
 	public static void send(CommandSender sender, TellrawJson tellrawJson) {
 		sender.spigot().sendMessage(tellrawJson.builder.create());
