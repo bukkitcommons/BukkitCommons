@@ -32,9 +32,9 @@ public class Blocks {
 			Chest leftC = (Chest)left;
 			Chest rightC = (Chest)right;
 			if(Locations.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), rightC.getLocation())) 
-				return rightC.getBlock();
-			if(Locations.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), leftC.getLocation())) 
 				return leftC.getBlock();
+			if(Locations.equalsLocation3DBlockPosition(oneSideOfChest.getLocation(), leftC.getLocation())) 
+				return rightC.getBlock();
 			return null;
 		}else{
 			return null;
